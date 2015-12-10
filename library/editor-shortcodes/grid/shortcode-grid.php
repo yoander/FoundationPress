@@ -23,12 +23,12 @@ function render_foundation_column( $atts, $content = '' ) {
     
     return do_shortcode( "<div class='column {$column_classes}'>" . $content . '</div>' );
 }
-add_shortcode( 'foundation-column', 'render_foundation_column' );
+add_shortcode( 'fdn-column', 'render_foundation_column' );
 
 function render_foundation_row( $atts, $content = '' ) {
     return do_shortcode( '<div class="row">' . $content . '</div>' );
 }
-add_shortcode( 'foundation-row', 'render_foundation_row' );
+add_shortcode( 'fdn-row', 'render_foundation_row' );
 
 
 /**
