@@ -9,21 +9,58 @@
 
 function render_foundation_column( $atts, $content = '' ) {
     
+    // Normalize Attributes to Identify Unnamed Attributes
+    $atts = normalize_attributes($atts);
+    
+    // Declare Acceptable Attributes
     $atts = shortcode_atts(array(
-        'sm-width'  => '',
-        'md-width'  => '',
-        'lg-width'  => '',
+        'sm'  => '',
+        'md'  => '',
+        'lg'  => '',
+        'sm-off'    => '',
+        'md-off'    => '',
+        'lg-off'    => '',
+        'sm-ctr'    => 0,
+        'md-ctr'    => 0,
+        'lg-ctr'    => 0,
+        'sm-pull'   => '',
+        'md-pull'   => '',
+        'lg-pull'   => '',
+        'sm-push'   => '',
+        'md-push'   => '',
+        'lg-push'   => '',
     ), $atts);
     
-    $atts['sm-width'] ? $column_classes[] = 'small-' . $atts['sm-width'] : null;
-    $atts['md-width'] ? $column_classes[] = 'medium-' . $atts['md-width'] : null;
-    $atts['lg-width'] ? $column_classes[] = 'large-' . $atts['lg-width'] : null;
+    // Define Column Widths
+    $atts['sm'] ? $column_classes[] = 'small-' . $atts['sm'] : null;
+    $atts['md'] ? $column_classes[] = 'medium-' . $atts['md'] : null;
+    $atts['lg'] ? $column_classes[] = 'large-' . $atts['lg'] : null;
     
+    // Define Column Offsets
+    $atts['sm-off'] ? $column_classes[] = 'small-offset-' . $atts['sm-off'] : null;
+    $atts['md-off'] ? $column_classes[] = 'medium-offset-' . $atts['md-off'] : null;
+    $atts['lg-off'] ? $column_classes[] = 'large-offset-' . $atts['lg-off'] : null;
+    
+    // Define Column Center
+    $atts['sm-ctr'] ? $column_classes[] = 'small-centered' : null;
+    $atts['md-ctr'] ? $column_classes[] = 'medium-centered' : null;
+    $atts['lg-ctr'] ? $column_classes[] = 'large-centered' : null;
+    
+    // Define Source Odering
+    $atts['sm-pull'] ? $column_classes[] = 'small-pull-' . $atts['sm-pull'] : null;
+    $atts['md-pull'] ? $column_classes[] = 'medium-pull-' . $atts['md-pull'] : null;
+    $atts['lg-pull'] ? $column_classes[] = 'large-pull-' . $atts['lg-pull'] : null;
+    $atts['sm-push'] ? $column_classes[] = 'small-push-' . $atts['sm-push'] : null;
+    $atts['md-push'] ? $column_classes[] = 'medium-push-' . $atts['md-push'] : null;
+    $atts['lg-push'] ? $column_classes[] = 'large-push-' . $atts['lg-push'] : null;
+    
+    
+    // Turn Column Class Array into String for HTML
     $column_class = implode( ' ', $column_classes );
     
     return do_shortcode( "<div class='column {$column_class}'>" . $content . '</div>' );
 }
-add_shortcode( 'fdn-column', 'render_foundation_column' );
+add_shortcode( 'fdn-col', 'render_foundation_column' );
 
 function render_foundation_row( $atts, $content = '' ) {
     return do_shortcode( '<div class="row">' . $content . '</div>' );
