@@ -15,13 +15,13 @@ function render_foundation_column( $atts, $content = '' ) {
         'lg-width'  => '',
     ), $atts);
     
-    $column_classes = $atts['sm-width'] ? 'small-' . $atts['sm-width'] : '';
-    $column_classes .= $atts['md-width'] ? 'medium-' . $atts['md-width'] : '';
-    $column_classes .= $atts['lg-width'] ? 'large-' . $atts['lg-width'] : '';
+    $atts['sm-width'] ? $column_classes[] = 'small-' . $atts['sm-width'] : null;
+    $atts['md-width'] ? $column_classes[] = 'medium-' . $atts['md-width'] : null;
+    $atts['lg-width'] ? $column_classes[] = 'large-' . $atts['lg-width'] : null;
     
-    print_r($column_classes);
+    $column_class = implode( ' ', $column_classes );
     
-    return do_shortcode( "<div class='column {$column_classes}'>" . $content . '</div>' );
+    return do_shortcode( "<div class='column {$column_class}'>" . $content . '</div>' );
 }
 add_shortcode( 'fdn-column', 'render_foundation_column' );
 
