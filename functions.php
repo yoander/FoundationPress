@@ -43,7 +43,7 @@ require_once( 'library/theme-support.php' );
 require_once( 'library/custom-nav.php' );
 
 /** Add Custom Shortcodes to Editor */
-require( 'library/editor-shortcodes/shortcodes-settings.php' );
+require_once( 'library/editor-shortcodes/shortcodes-settings.php' );
 
 /** Change WP's sticky post class */
 require_once( 'library/sticky-posts.php' );
