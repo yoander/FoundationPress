@@ -64,7 +64,7 @@ function render_foundation_column( $atts, $content = '' ) {
 }
 add_shortcode( 'fdn-col', 'render_foundation_column' );
 
-//Render Foundation Rows
+// Render Foundation Rows
 function render_foundation_row( $atts, $content = '' ) {
     return do_shortcode( '<div class="row">' . $content . '</div>' );
 }
