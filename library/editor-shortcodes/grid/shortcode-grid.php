@@ -8,6 +8,7 @@
  * @package WordPress
  * @subpackage FoundationPress
  */
+
 function render_foundation_column( $atts, $content = '' ) {
 
     // Normalize Attributes to Identify Unnamed Attributes

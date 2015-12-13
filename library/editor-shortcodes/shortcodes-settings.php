@@ -10,15 +10,13 @@
 
 require( 'grid/shortcode-grid.php' );
 
-
-
 /** Normalize Unnamed Attributes
  *  This function allows us to use unnamed attributes as
  *  boolean operators by replacing the key of the attribute
  *  with an identifiable string.
  */
 function normalize_attributes( $atts ) {
-    foreach ($atts as $key => $value) {
+    foreach ( $atts as $key => $value ) {
         if (is_int($key)) {
             $atts[ $value ] = true;
             unset($atts[ $key ]);
