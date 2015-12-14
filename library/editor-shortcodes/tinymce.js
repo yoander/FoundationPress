@@ -1,6 +1,6 @@
 (function() {
-   tinymce.PluginManager.add('foundationpress', function(editor, url) {
-      editor.addButton('foundationpress', {
+   tinymce.PluginManager.add('foundationpress_shortcodes', function(editor, url) {
+      editor.addButton('foundationpress_shortcodes', {
          title: 'FoundationPress',
          type: 'menubutton',
          icon: 'wp_code',
@@ -8,9 +8,6 @@
             {
                text: 'Grid',
                value: '[fdn-row][/fdn-row]',
-               onclick: function() {
-                  editor.insertContent(this.value());
-               },
                menu: [
                   {
                      text: 'Row',
@@ -28,9 +25,9 @@
                         editor.insertContent(this.value());
                      }
                   }
-               ]
+               ] // Grid Submenu 
             }
-         ]
+         ] // Main Menu
       });
    });
 })();

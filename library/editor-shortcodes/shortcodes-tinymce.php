@@ -1,11 +1,19 @@
-<?php  
+<?php
+/**
+ * Register FoundationPress Shortcodes Button
+ * Adds FoundationPress button to TinyMCE Editor
+ *
+ * @package WordPress
+ * @subpackage FoundationPress
+ */
+
 function register_button( $buttons ) {
-   array_push( $buttons, '|', 'foundationpress' );
+   array_push( $buttons, '|', 'foundationpress_shortcodes' );
    return $buttons;
 }
 
 function add_plugin( $plugin_array ) {
-   $plugin_array['foundationpress'] = get_template_directory_uri() . '/library/editor-shortcodes/tinymce.js';
+   $plugin_array['foundationpress_shortcodes'] = get_template_directory_uri() . '/library/editor-shortcodes/tinymce.js';
    return $plugin_array;
 }
 
