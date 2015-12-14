@@ -6,6 +6,7 @@
  * @package WordPress
  * @subpackage FoundationPress
  */
+
 function register_button( $buttons ) {
    array_push( $buttons, '|', 'foundationpress_shortcodes' );
    return $buttons;
