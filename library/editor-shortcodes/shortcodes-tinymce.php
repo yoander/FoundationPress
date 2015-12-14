@@ -10,7 +10,6 @@ function add_plugin( $plugin_array ) {
 }
 
 function foundationpress_shortcodes_button() {
-
    if ( ! current_user_can('edit_posts') && ! current_user_can('edit_pages') ) {
       return;
    }
@@ -22,5 +21,3 @@ function foundationpress_shortcodes_button() {
 }
 
 add_action('init', 'foundationpress_shortcodes_button');
-
-?>
