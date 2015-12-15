@@ -9,6 +9,7 @@
  */
 
 require( 'grid/shortcode-grid.php' );
+require( 'shortcodes-tinymce.php' );
 
 /**
  *  Normalize Unnamed Attributes
