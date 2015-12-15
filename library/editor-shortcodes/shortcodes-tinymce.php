@@ -22,7 +22,7 @@ function add_plugin( $plugin_array ) {
 function foundationpress_shortcodes_css() {
     wp_enqueue_style('foundationpress_shortcodes_styles', get_template_directory_uri() . '/library/editor-shortcodes/style.css');
 }
- 
+
 add_action('admin_enqueue_scripts', 'foundationpress_shortcodes_css');
 
 // Show button for qualified users
