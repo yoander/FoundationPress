@@ -13,11 +13,19 @@ function register_button( $buttons ) {
    return $buttons;
 }
 
+// Add plugin to TinyMCE external plugins
 function add_plugin( $plugin_array ) {
    $plugin_array['foundationpress_shortcodes'] = get_template_directory_uri() . '/library/editor-shortcodes/tinymce.js';
    return $plugin_array;
 }
 
+function foundationpress_shortcodes_css() {
+    wp_enqueue_style('foundationpress_shortcodes_styles', get_template_directory_uri() . '/library/editor-shortcodes/style.css');
+}
+ 
+add_action('admin_enqueue_scripts', 'foundationpress_shortcodes_css');
+
+// Show button for qualified users
 function foundationpress_shortcodes_button() {
    if ( ! current_user_can('edit_posts') && ! current_user_can('edit_pages') ) {
       return;

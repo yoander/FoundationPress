@@ -16,7 +16,7 @@
       editor.addButton('foundationpress_shortcodes', {
          title: 'FoundationPress',
          type: 'menubutton',
-         icon: 'wp_code',
+         icon: 'icon foundationpress-shortcodes-icon',
          menu: [
             {
                text: 'Grid',
