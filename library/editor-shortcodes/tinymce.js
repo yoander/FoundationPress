@@ -1,14 +1,27 @@
 (function() {
 
-   // Set to the number of columns in your layout
-   var numCols = 12;
+   // Grid
+   var numCols = 12; // Set to the number of columns in your layout
+   var colValues = []; // Create empty array for column values
+   
+   for (var i = 0; i <= numCols; i++) { // Populate column values array
+      colValues.push({text: i.toString(), value: i.toString()});
+   }
 
-   // Create empty array for column values
-   var colValues = [];
+   // Colors
+   var colors = ['Primary', 'Secondary', 'Success', 'Alert', 'Warning', 'Disabled'];
+   var colorValues = [];
 
-   // Populate column values array
-   for (var i = 0; i <= numCols; i++) {
-      colValues.push({text: i.toString(), value: i.toString()})
+   for (var color in colors) {
+      colorValues.push({text: colors[color], value: colors[color].toLowerCase()});
+   }
+
+   // Sizes
+   var sizes = ['Default', 'Tiny', 'Small', 'Large'];
+   var sizeValues = [];
+
+   for (var size in sizes) {
+      sizeValues.push({text: sizes[size], value: sizes[size].toLowerCase()});
    }
 
    // TinyMCE functionality
@@ -18,6 +31,7 @@
          type: 'menubutton',
          icon: 'icon foundationpress-shortcodes-icon',
          menu: [
+            // Grid
             {
                text: 'Grid',
                value: '[fdn-row][/fdn-row]',
@@ -35,7 +49,7 @@
                      value: '[fdn-col][/fdn-col]',
                      onclick: function(e) {
                         e.stopPropagation();
-                        editor.windowManager.open( {
+                        editor.windowManager.open({
                            title: 'Insert Columns',
                            body: [
                              {
@@ -73,6 +87,11 @@
                                  name: 'lrgCtr',
                                  label: 'Center Large',
                                  value: false
+                              },
+                              {
+                                 type: 'textbox',
+                                 name: 'colClass',
+                                 label: 'Class'
                               }
                            ],
                            onsubmit: function(e) {
@@ -84,7 +103,7 @@
                                  colString += ' sml="' + e.data.smlCol + '"';
                               }
 
-                              if (e.data.smlCtr === true) {
+                              if (e.data.smlCtr) {
                                  colString += ' sml-ctr';
                               }
 
@@ -93,7 +112,7 @@
                                  colString += ' med="' + e.data.medCol + '"';
                               }
 
-                              if (e.data.medCtr === true) {
+                              if (e.data.medCtr) {
                                  colString += ' med-ctr';
                               }
 
@@ -102,8 +121,13 @@
                                  colString += ' lrg="' + e.data.lrgCol + '"';
                               }
 
-                              if (e.data.lrgCtr === true) {
+                              if (e.data.lrgCtr) {
                                  colString += ' lrg-ctr';
+                              }
+
+                              // Class
+                              if (e.data.colClass !== '') {
+                                 colString += ' class="' + e.data.colClass + '"';
                               }
 
                               // Close column shortcode
@@ -115,7 +139,112 @@
                         });
                      }
                   }
-               ] // Grid Submenu 
+               ] 
+            },
+            // Buttons
+            {
+               text: 'Button',
+               value: '[fdn-btn][/fdn-btn]',
+               onclick: function(e) {
+                  e.stopPropagation();
+                  editor.windowManager.open({
+                     title: 'Insert Button',
+                     body: [
+                       {
+                           type: 'textbox',
+                           name: 'btnText',
+                           label: 'Text'
+                        },
+                        {
+                           type: 'textbox',
+                           name: 'btnUrl',
+                           label: 'Link URL'
+                         },
+                        {
+                           type: 'listbox',
+                           name: 'btnColor',
+                           label: 'Color',
+                           values: colorValues
+                        },
+                        {
+                           type: 'listbox',
+                           name: 'btnSize',
+                           label: 'Size',
+                           values: sizeValues
+                        },
+                        {
+                           type: 'checkbox',
+                           name: 'btnHollow',
+                           label: 'Hollow',
+                           value: false
+                        },
+                        {
+                           type: 'checkbox',
+                           name: 'btnExpanded',
+                           label: 'Expanded',
+                           value: false
+                        },
+                        {
+                           type: 'checkbox',
+                           name: 'btnDisabled',
+                           label: 'Disabled',
+                           value: false
+                        },
+                        {
+                           type: 'textbox',
+                           name: 'btnClass',
+                           label: 'Class'
+                        }
+                     
+                     ],
+                     onsubmit: function(e) {
+                        // Build the button shortcode string
+                        var btnString = '[fdn-btn';
+
+                        // Text
+                        btnString += ' text="' + e.data.btnText + '"';
+
+                        // URL
+                        btnString += ' url="' + e.data.btnUrl + '"';
+
+                        // Size
+                        if (e.data.btnSize !== 'default') {
+                           btnString += ' size="' + e.data.btnSize + '"';
+                        }
+
+                        // Color
+                        if (e.data.btnColor !== 'primary') {
+                           btnString += ' color="' + e.data.btnColor + '"';
+                        }
+
+                        // Hollow
+                        if (e.data.btnHollow) {
+                           btnString += ' hollow';
+                        }
+
+                        // Expanded
+                        if (e.data.btnExpanded) {
+                           btnString += ' expanded';
+                        }
+
+                        // Disabled
+                        if (e.data.btnDisabled) {
+                           btnString += ' disabled';
+                        }
+
+                        // Class
+                        if (e.data.btnClass !== '') {
+                           btnString += ' class="' + e.data.btnClass + '"';
+                        }
+
+                        // Close button shortcode
+                        btnString += ']';
+
+                        // Print shortcode string to the editor
+                        editor.insertContent(btnString);
+                     }
+                  });
+               }
             }
          ] // Main Menu
       });
