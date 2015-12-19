@@ -52,9 +52,9 @@ function render_foundation_column( $atts, $content = '' ) {
     $atts['sm-ctr'] ? $column_classes[] = 'small-centered' : null;
     $atts['md-ctr'] ? $column_classes[] = 'medium-centered' : null;
     $atts['lg-ctr'] ? $column_classes[] = 'large-centered' : null;
-    $atts['sm-unctr'] ? $column_classes[] = 'small-uncenter' : null;
-    $atts['md-unctr'] ? $column_classes[] = 'medium-uncenter' : null;
-    $atts['lg-unctr'] ? $column_classes[] = 'large-uncenter' : null;
+    $atts['sm-unctr'] ? $column_classes[] = 'small-uncentered' : null;
+    $atts['md-unctr'] ? $column_classes[] = 'medium-uncentered' : null;
+    $atts['lg-unctr'] ? $column_classes[] = 'large-uncentered' : null;
 
     // Define Source Odering
     $atts['sm-pull'] ? $column_classes[] = 'small-pull-' . $atts['sm-pull'] : null;

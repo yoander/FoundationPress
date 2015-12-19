@@ -52,42 +52,49 @@
                         editor.windowManager.open({
                            title: 'Insert Columns',
                            body: [
-                             {
+                              // Small Width
+                              {
                                  type: 'listbox',
                                  name: 'smlCol',
                                  label: 'Small Columns',
                                  values: colValues
                               },
+                              // Medium Width
                               {
                                  type: 'listbox',
                                  name: 'medCol',
                                  label: 'Medium Columns',
                                  values: colValues
                               },
+                              // Large Width
                               {
                                  type: 'listbox',
                                  name: 'lrgCol',
                                  label: 'Large Columns',
                                  values: colValues
                               },
+                              // Small Center
                               {
                                  type: 'checkbox',
                                  name: 'smlCtr',
                                  label: 'Center Small',
                                  value: false
                               },
+                              // Medium Center
                               {
                                  type: 'checkbox',
                                  name: 'medCtr',
                                  label: 'Center Medium',
                                  value: false
                               },
+                              // Large Center
                               {
                                  type: 'checkbox',
                                  name: 'lrgCtr',
                                  label: 'Center Large',
                                  value: false
                               },
+                              // Class
                               {
                                  type: 'textbox',
                                  name: 'colClass',
@@ -127,7 +134,7 @@
 
                               // Class
                               if (e.data.colClass !== '') {
-                                 colString += ' class="' + e.data.colClass + '"';
+                                 colString += ' class="' + e.data.colClass.toLowerCase().replace(/\./g, '') + '"';
                               }
 
                               // Close column shortcode
@@ -205,7 +212,7 @@
                         btnString += ' text="' + e.data.btnText + '"';
 
                         // URL
-                        btnString += ' url="' + e.data.btnUrl + '"';
+                        btnString += ' url="' + e.data.btnUrl.toLowerCase() + '"';
 
                         // Size
                         if (e.data.btnSize !== 'default') {
@@ -234,7 +241,7 @@
 
                         // Class
                         if (e.data.btnClass !== '') {
-                           btnString += ' class="' + e.data.btnClass + '"';
+                           btnString += ' class="' + e.data.btnClass.toLowerCase().replace(/\./g, '') + '"';
                         }
 
                         // Close button shortcode
