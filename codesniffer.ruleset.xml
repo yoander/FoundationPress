@@ -40,5 +40,7 @@
 		<exclude name="WordPress.WhiteSpace.ControlStructureSpacing.NoSpaceBeforeCloseParenthesis)" />
 
 		<exclude name="WordPress.VIP.RestrictedFunctions" />
+
+		<exclude name="WordPress.NamingConventions.ValidVariableName.NotSnakeCase" />
 	</rule>
 </ruleset>

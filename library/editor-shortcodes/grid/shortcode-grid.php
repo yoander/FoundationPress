@@ -35,7 +35,7 @@ function render_foundation_column( $atts, $content = '' ) {
         'sm-push'   => '',
         'md-push'   => '',
         'lg-push'   => '',
-        'class'     => ''
+        'class'     => '',
     ), $atts);
 
     // Define Column Widths
