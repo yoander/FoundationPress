@@ -3,11 +3,14 @@
 
 var $           = require('gulp-load-plugins')();
 var argv        = require('yargs').argv;
-var	gulp	      = require('gulp');
+var	gulp	    = require('gulp');
 var browserSync = require('browser-sync').create();
 var merge       = require('merge-stream');
 var sequence    = require('run-sequence');
 var colors      = require('colors');
+var phpcs       = require('gulp-phpcs');
+var phpcbf      = require('gulp-phpcbf');
+var gutil       = require('gulp-util');
 
 // Enter URL of your local server here
 // Example: 'http://localwebsite.dev'
@@ -58,7 +61,7 @@ var PATHS = {
 
     // What-input
     'assets/components/what-input/what-input.js',
-    
+
     // Include your own custom scripts (located in the custom folder)
     'assets/javascript/custom/*.js'
   ],
@@ -79,7 +82,7 @@ var PATHS = {
 
 // Browsersync task
 gulp.task('browser-sync', ['build'], function() {
-  
+
   var files = [
             '**/*.php',
             'assets/images/**/*.{png,jpg,gif}'
@@ -88,15 +91,15 @@ gulp.task('browser-sync', ['build'], function() {
   browserSync.init(files, {
     // Proxy address
     proxy: URL,
-    
-    // Port # 
+
+    // Port #
     // port: PORT
   });
 });
 
 // Compile Sass into CSS
 // In production, the CSS is compressed
-gulp.task('sass', function() {  
+gulp.task('sass', function() {
   // Minify CSS if run wtih --production flag
   var minifycss = $.if(isProduction, $.minifyCss());
 
@@ -118,7 +121,7 @@ gulp.task('sass', function() {
 // Combine JavaScript into one file
 // In production, the file is minified
 gulp.task('javascript', function() {
-  
+
   var uglify = $.uglify()
     .on('error', function (e) {
       console.log(e);
@@ -170,6 +173,27 @@ gulp.task('build', function(done) {
   sequence('copy',
           ['sass', 'javascript'],
           done);
+});
+
+gulp.task('phpcs', function() {
+  return gulp.src(['*.php'])
+    .pipe(phpcs({
+      bin: 'wpcs/vendor/bin/phpcs',
+      standard: './codesniffer.ruleset.xml',
+      showSniffCode: true,
+    }))
+    .pipe(phpcs.reporter('log'));
+});
+
+gulp.task('phpcbf', function () {
+  return gulp.src(['*.php'])
+  .pipe(phpcbf({
+    bin: 'wpcs/vendor/bin/phpcbf',
+    standard: './codesniffer.ruleset.xml',
+    warningSeverity: 0
+  }))
+  .on('error', gutil.log)
+  .pipe(gulp.dest('.'));
 });
 
 // Default gulp task

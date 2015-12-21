@@ -26,12 +26,16 @@ function render_foundation_column( $atts, $content = '' ) {
         'sm-ctr'    => 0,
         'md-ctr'    => 0,
         'lg-ctr'    => 0,
+        'sm-unctr'  => 0,
+        'md-unctr'  => 0,
+        'lg-unctr'  => 0,
         'sm-pull'   => '',
         'md-pull'   => '',
         'lg-pull'   => '',
         'sm-push'   => '',
         'md-push'   => '',
         'lg-push'   => '',
+        'class'     => '',
     ), $atts);
 
     // Define Column Widths
@@ -48,6 +52,9 @@ function render_foundation_column( $atts, $content = '' ) {
     $atts['sm-ctr'] ? $column_classes[] = 'small-centered' : null;
     $atts['md-ctr'] ? $column_classes[] = 'medium-centered' : null;
     $atts['lg-ctr'] ? $column_classes[] = 'large-centered' : null;
+    $atts['sm-unctr'] ? $column_classes[] = 'small-uncentered' : null;
+    $atts['md-unctr'] ? $column_classes[] = 'medium-uncentered' : null;
+    $atts['lg-unctr'] ? $column_classes[] = 'large-uncentered' : null;
 
     // Define Source Odering
     $atts['sm-pull'] ? $column_classes[] = 'small-pull-' . $atts['sm-pull'] : null;
@@ -57,10 +64,13 @@ function render_foundation_column( $atts, $content = '' ) {
     $atts['md-push'] ? $column_classes[] = 'medium-push-' . $atts['md-push'] : null;
     $atts['lg-push'] ? $column_classes[] = 'large-push-' . $atts['lg-push'] : null;
 
+    // Define Additional Classes
+    $atts['class'] ? $column_classes[] = $atts['class'] : null;
+
     // Turn Column Class Array into String for HTML
     $column_class = implode( ' ', $column_classes );
 
-    return do_shortcode( "<div class='column {$column_class}'>" . $content . '</div>' );
+    return do_shortcode( "<div class='{$column_class} columns'>" . $content . '</div>' );
 }
 add_shortcode( 'fdn-col', 'render_foundation_column' );
 

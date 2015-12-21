@@ -9,6 +9,7 @@
  */
 
 require( 'grid/shortcode-grid.php' );
+require( 'buttons/shortcode-buttons.php' );
 require( 'shortcodes-tinymce.php' );
 
 /**
