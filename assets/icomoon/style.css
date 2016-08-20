@@ -1,0 +1,64 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?yt1dk3');
+  src:  url('fonts/icomoon.eot?yt1dk3#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?yt1dk3') format('truetype'),
+    url('fonts/icomoon.woff?yt1dk3') format('woff'),
+    url('fonts/icomoon.svg?yt1dk3#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow_back:before {
+  content: "\e5c4";
+}
+.icon-arrow_forward:before {
+  content: "\e5c8";
+}
+.icon-question_answer:before {
+  content: "\e8af";
+}
+.icon-clock-o:before {
+  content: "\f017";
+}
+.icon-tags:before {
+  content: "\f02c";
+}
+.icon-books:before {
+  content: "\e920";
+}
+.icon-user:before {
+  content: "\e971";
+}
+.icon-share:before {
+  content: "\ea7d";
+}
+.icon-calendar:before {
+  content: "\e900";
+}
+

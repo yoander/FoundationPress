@@ -40,7 +40,14 @@
 //  35. Tooltip
 //  36. Top Bar
 
+
+@import '//fonts.googleapis.com/css?family=Fjalla+One&subset=latin-ext';
+@import '//cdn.jsdelivr.net/font-hack/2.020/css/hack-extended.min.css';
+//@import 'https://i.icomoon.io/public/temp/8b349d8ad1/MyIcons/style.css';
+@import '//overpass-30e2.kxcdn.com/overpass.css';
+
 @import '../../components/foundation-sites/scss/util/util';
+@import '../../icomoon/style.scss';
 
 // 1. Global
 // ---------
@@ -55,14 +62,16 @@ $foundation-palette: (
   warning: #ffae00,
   alert: #ec5840,
 );
+$light-blue: #2196f3;
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
 $white: #fefefe;
+$custom: #555;
 $body-background: $white;
-$body-font-color: $black;
-$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$body-font-color: $custom;
+$body-font-family: Overpass, sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
@@ -102,25 +111,25 @@ $block-grid-max: 8;
 // 4. Base Typography
 // ------------------
 
-$header-font-family: $body-font-family;
+$header-font-family: 'Fjalla One';
 $header-font-weight: $global-weight-normal;
 $header-font-style: normal;
-$font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
+$font-family-monospace: Hack, Consolas, 'Liberation Mono', Courier, monospace;
 $header-sizes: (
   small: (
-    'h1': 24,
-    'h2': 20,
-    'h3': 19,
-    'h4': 18,
-    'h5': 17,
-    'h6': 16,
+    'h1': 18, // -8
+    'h2': 16,
+    'h3': 15,
+    'h4': 14,
+    'h5': 13,
+    'h6': 12,
   ),
   medium: (
-    'h1': 48,
-    'h2': 40,
-    'h3': 31,
-    'h4': 25,
-    'h5': 20,
+    'h1': 32,
+    'h2': 28,
+    'h3': 24,
+    'h4': 20,
+    'h5': 18,
     'h6': 16,
   ),
 );
@@ -133,11 +142,11 @@ $header-small-font-color: $medium-gray;
 $paragraph-lineheight: 1.6;
 $paragraph-margin-bottom: 1rem;
 $paragraph-text-rendering: optimizeLegibility;
-$code-color: $black;
+$code-color: inherit;
 $code-font-family: $font-family-monospace;
 $code-font-weight: $global-weight-normal;
-$code-background: $light-gray;
-$code-border: 1px solid $medium-gray;
+$code-background: transparent;
+$code-border: none;
 $code-padding: rem-calc(2 5 1);
 $anchor-color: $primary-color;
 $anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
@@ -157,7 +166,7 @@ $defnlist-term-weight: $global-weight-bold;
 $defnlist-term-margin-bottom: 0.3rem;
 $blockquote-color: $dark-gray;
 $blockquote-padding: rem-calc(9 20 0 19);
-$blockquote-border: 1px solid $medium-gray;
+$blockquote-border: 3px solid $light-gray;
 $cite-font-size: rem-calc(13);
 $cite-color: $dark-gray;
 $keystroke-font: $font-family-monospace;

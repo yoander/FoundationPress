@@ -24,7 +24,17 @@ p.wp-caption-text{
 }
 
 .aligncenter {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.widget ul {
+    list-style: none;
+    margin-left: 0;
+}
+
+.widget ul li {
+    margin: 6px 0;
 }
